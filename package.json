@@ -1,0 +1,25 @@
+{
+  "name": "api-social-network",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Will2tall/api-social-network.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Will2tall/api-social-network/issues"
+  },
+  "homepage": "https://github.com/Will2tall/api-social-network#readme"
+}
