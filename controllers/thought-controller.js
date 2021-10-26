@@ -6,7 +6,7 @@ const thoughtController = {
         .then(({ _id }) => {
             return User.findOneAndUpdate(
                 { _id: params.userId },
-                { $push: { thought: _id } },
+                { $push: { thoughts: _id } },
                 { new: true }
             );
         })
@@ -18,6 +18,34 @@ const thoughtController = {
             res.json(dbUserData);
         })
         .catch(err => res.json(err))
+    },
+
+    getOneThought({ params }, res) {
+        Thought.findOne({ _id: params.thoughtId })
+        .select('-__v')
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({ message: 'No thought can be found!' });
+                return
+            }
+            res.json(dbThoughtData);
+        })
+        .catch(err => {
+            
+            res.status(400).json(err);
+        });
+    },
+
+    updateThought({ params, body }, res) {
+        Thought.findOneAndUpdate({ _id: params.thoughtId }, body, { new: true })
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({ message: 'No thought can be found!' });
+                return;
+            }
+            res.json(dbThoughtData);
+        })
+        .catch(err => res.status(400).json(err));
     },
 
     addReaction({ params, body }, res){
